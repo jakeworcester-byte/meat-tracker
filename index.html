@@ -28,6 +28,10 @@
       <a href="#cookday">Cook Day</a>
       <a href="#faq">FAQ</a>
     </nav>
+    <div class="unit-toggle" role="group" aria-label="Temperature units">
+      <button type="button" data-unit="F" aria-pressed="true">&deg;F</button>
+      <button type="button" data-unit="C" aria-pressed="false">&deg;C</button>
+    </div>
   </div>
 </div>
 
@@ -132,7 +136,7 @@
       <div class="card">
         <span class="big">Fat</span>
         <h4>Is flavor, and also water</h4>
-        <p>Intramuscular fat melts around 105 to 130&deg;F, right in the range where a steak is cooking. It lubricates the muscle fiber bundles, carries fat-soluble flavor compounds, and makes the meat read as juicier even when it is technically losing moisture.</p>
+        <p data-temps>Intramuscular fat melts around {{105|n}} to {{130}}, right in the range where a steak is cooking. It lubricates the muscle fiber bundles, carries fat-soluble flavor compounds, and makes the meat read as juicier even when it is technically losing moisture.</p>
       </div>
     </div>
   </section>
@@ -164,7 +168,7 @@
       </div>
       <div class="lab-panel">
         <div class="grade-name" id="doneName" style="color:var(--ember2)">Medium Rare</div>
-        <div class="grade-sub" id="doneTemp">129&deg;F &middot; 54&deg;C</div>
+        <div class="grade-sub" id="doneTemp">129&deg;F</div>
         <p id="doneDesc"></p>
         <div class="verdict" id="doneVerdict"></div>
         <div class="statline" id="doneStats"></div>
@@ -215,6 +219,7 @@
 <div class="toast" id="toast"></div>
 
 <script src="assets/config.js"></script>
+<script src="assets/temp.js"></script>
 <script src="assets/svg.js"></script>
 <script src="assets/content.js"></script>
 <script src="assets/app.js"></script>

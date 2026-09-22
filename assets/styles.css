@@ -78,6 +78,21 @@ a{ color:var(--ember2); }
 .navlinks a:hover{ color:var(--cream); background:var(--panel2); }
 @media (max-width:760px){ .navlinks{ display:none; } }
 
+/* ---------- temperature unit toggle ---------- */
+.unit-toggle{
+  display:flex; gap:2px; padding:3px; flex:none;
+  background:rgba(0,0,0,.35); border:1px solid var(--line); border-radius:999px;
+}
+.unit-toggle button{
+  font-family:"JetBrains Mono", monospace; font-size:12px; font-weight:700;
+  letter-spacing:.04em; color:var(--muted2); background:transparent; border:0;
+  padding:5px 12px; border-radius:999px; cursor:pointer; transition:.18s; line-height:1.2;
+}
+.unit-toggle button:hover{ color:var(--cream); }
+.unit-toggle button.on{ background:var(--beef); color:#fff; }
+.unit-toggle button:focus-visible{ outline:2px solid var(--ember2); outline-offset:1px; }
+@media (max-width:760px){ .unit-toggle{ margin-left:auto; } }
+
 /* ---------- hero ---------- */
 .hero{ padding:46px 0 10px; text-align:center; }
 .kicker{

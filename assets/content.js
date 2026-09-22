@@ -11,7 +11,7 @@
       name: 'The Long Nap',
       short: 'Wet Aging',
       tag: 'Cryovac, undisturbed',
-      blurb: 'The ribeye is sealed in its own private vacuum, sitting at 36 degrees, doing absolutely nothing visible and an enormous amount of chemistry.',
+      blurb: 'The ribeye is sealed in its own private vacuum, sitting at {{36|w}}, doing absolutely nothing visible and an enormous amount of chemistry.',
       detail: 'This is wet aging. The subprimal stays in the bag it was packed in, and the beef’s own enzymes go to work on the connective tissue and muscle proteins. No air, no mold, no shrinkage, no smell. Just time. Twenty one days is the floor for a noticeable difference. Twenty eight is where most of the tenderizing has already happened and you start hitting diminishing returns.',
       sci: 'Two enzyme families do the work. Calpains break down the proteins that hold muscle fibers rigid, and they do most of their damage in the first 10 to 14 days. Cathepsins are slower and keep chipping away at connective tissue for weeks. Neither one needs oxygen, which is why a sealed bag works fine.',
       sciTitle: 'What is actually happening'
@@ -34,7 +34,7 @@
       short: 'Pellicle',
       tag: 'Uncovered, 24 hours',
       blurb: 'The steaks go back in the fridge naked on a rack. Air moves over them. Surface moisture leaves. The crust you get later is decided right here.',
-      detail: 'A wet steak cannot brown. Every bit of surface water has to boil off before the surface can get above 212 degrees, and browning does not really start until around 300. Twenty four hours uncovered on a wire rack in a cold fridge pulls the surface moisture out and leaves a slightly tacky, matte skin called a pellicle. It also lightly seasons the surface if you salt first, which you should.',
+      detail: 'A wet steak cannot brown. Every bit of surface water has to boil off before the surface can get above {{212|w}}, and browning does not really start until around {{300|n}}. Twenty four hours uncovered on a wire rack in a cold fridge pulls the surface moisture out and leaves a slightly tacky, matte skin called a pellicle. It also lightly seasons the surface if you salt first, which you should.',
       sci: 'This is where the dry brine happens too. Salt on the surface pulls moisture out, dissolves into it, and then that concentrated brine gets reabsorbed and carried into the muscle. The salt denatures some proteins so they hold water better during cooking. Result: seasoned all the way through, and a drier surface than when you started.',
       sciTitle: 'Dry brining, explained'
     },
@@ -54,10 +54,10 @@
       icon: '🛁',
       name: 'The Hot Tub',
       short: 'Sous Vide',
-      tag: 'Water bath, 129 degrees',
+      tag: 'Water bath, {{129|w}}',
       blurb: 'Sealed steaks go into a water bath held within a degree of target. The steak cannot overcook because the water is not hot enough to overcook it.',
       detail: 'This is the entire trick of sous vide: the water is exactly as hot as you want the steak to be. Give it a few hours and the whole steak, edge to edge, is the same temperature. No grey band, no guessing, no crowding around a thermometer. Then it comes out, gets patted bone dry, and rests for a few minutes before it goes anywhere near fire.',
-      sci: 'Conventional cooking creates a steep temperature gradient. The outside has to overshoot badly so the center can catch up, which is what the grey ring on a pan-seared steak is. Holding everything at one temperature removes the gradient entirely, so 129 degrees means 129 degrees from crust to crust.',
+      sci: 'Conventional cooking creates a steep temperature gradient. The outside has to overshoot badly so the center can catch up, which is what the grey ring on a pan-seared steak is. Holding everything at one temperature removes the gradient entirely, so {{129|w}} means {{129|w}} from crust to crust.',
       sciTitle: 'Why there is no grey band'
     },
     {
@@ -65,10 +65,10 @@
       icon: '🔥',
       name: 'The Fire',
       short: 'Sear',
-      tag: 'Primo XL, about 700 degrees',
+      tag: 'Primo XL, about {{700|w}}',
       blurb: 'Sixty seconds a side on a ceramic kamado running hotter than your oven can dream about. This part is loud, fast, and entirely about the crust.',
       detail: 'The steak is already cooked. The only job left is building a crust, so the grill runs as hot as it will go and the steak is on and off before the interior notices. Dry surface, ripping hot grates, one flip, and then straight to the board. There is no rest needed on the back end because sous vide already did the resting.',
-      sci: 'The Maillard reaction is amino acids and reducing sugars rearranging into hundreds of new aromatic compounds. It needs a dry surface and roughly 300 degrees or more, and it accelerates hard above 350. Everything you think of as steak flavor, the roasted and nutty and savory notes, is manufactured in those sixty seconds.',
+      sci: 'The Maillard reaction is amino acids and reducing sugars rearranging into hundreds of new aromatic compounds. It needs a dry surface and roughly {{300|w}} or more, and it accelerates hard above {{350|n}}. Everything you think of as steak flavor, the roasted and nutty and savory notes, is manufactured in those sixty seconds.',
       sciTitle: 'The Maillard reaction'
     },
     {
@@ -183,7 +183,7 @@
     ['Wet aging or dry aging? Which is better?', 'They do different things. Wet aging tenderizes without changing flavor much and loses no weight. Dry aging tenderizes and also concentrates flavor through moisture loss, developing nutty and funky notes, but it costs you 15 to 30 percent of the weight in evaporation and trim, and it needs controlled humidity and airflow. A regular kitchen fridge is not set up for a proper dry age. Wet aging in the bag it came in is the right call here.'],
     ['Can I have two steaks?', 'You can claim two steaks on this website. What happens in the physical world is governed by an entirely separate and much less forgiving set of rules.'],
     ['Why sous vide if you are just going to grill it anyway?', 'Because cooking fourteen steaks to the same doneness on a grill, at the same time, for a group of people, is a nightmare. The water bath takes doneness off the table completely, so game day is only about the sear. It also means nobody has to stand around while the last four steaks catch up.'],
-    ['What is a Primo XL?', 'A ceramic kamado grill. Thick ceramic walls hold heat like a pizza oven, so it will sit at 700 degrees or higher without complaint. For a sixty second sear that is exactly what you want. It is also a genuinely excellent low and slow smoker, which is irrelevant today.'],
+    ['What is a Primo XL?', 'A ceramic kamado grill. Thick ceramic walls hold heat like a pizza oven, so it will sit at {{700|w}} or higher without complaint. For a sixty second sear that is exactly what you want. It is also a genuinely excellent low and slow smoker, which is irrelevant today.'],
     ['Is 21 to 28 days safe?', 'Yes, in an unopened factory cryovac bag held at refrigeration temperature. That is how beef gets from the packing plant to the store in the first place, and packers routinely spec 35 to 45 days of shelf life on primal cuts. The bag being intact is the part that matters. A punctured bag is a trash bag.'],
     ['Why does the meat look purple in the tracker?', 'Because it is purple in there. Myoglobin without oxygen is a deep purple red. Once the bag opens and the meat hits air, it blooms bright red within about fifteen minutes. Watch the Butchery Day stage on the timeline and you will see it change.'],
     ['Can I bring anything?', 'Yes. Bring a side, bring a bottle, bring your appetite, and bring the ability to wait patiently for sixty seconds per side without offering grilling advice.']
@@ -198,7 +198,7 @@
       'Fridge compressor cycled. Beef unbothered.',
       'Someone opened the fridge looking for cheese. Beef was not disturbed.',
       'Connective tissue continues to lose the argument.',
-      'Internal temperature holding at 36 degrees.',
+      'Internal temperature holding at {{36|w}}.',
       'Purge liquid accumulating on schedule. This is normal and you should stop thinking about it.',
       'No mold. No air. No drama.',
       'Day ' + '{day}' + ' of the nap. Beef has no notes.',
@@ -237,7 +237,7 @@
     ],
     sousvide: [
       'Water bath up to temperature.',
-      'Circulator holding 129 degrees, plus or minus nothing.',
+      'Circulator holding {{129|w}}, plus or minus nothing.',
       'Steaks submerged. Timer running.',
       'Core temperature climbing. Slowly. On purpose.',
       'Edge to edge uniformity approaching one hundred percent.',
@@ -245,7 +245,7 @@
       'Grill lighting in the background. Do not rush this part.'
     ],
     sear: [
-      'Primo XL at 700 degrees and climbing.',
+      'Primo XL at {{700|w}} and climbing.',
       'Steaks out of the bath. Patted bone dry.',
       'Grates are glowing. This is fine.',
       'Steak on. Sixty seconds. Nobody move.',

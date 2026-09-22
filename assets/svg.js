@@ -18,6 +18,7 @@
   }
 
   function CFG() { return window.MEAT_CONFIG; }
+  function T() { return window.MeatTemp; }
 
   const PATHS = {
     outer: 'M16,94 C18,58 46,34 98,27 C146,21 196,33 218,60 C232,78 228,104 206,120 C182,138 128,146 84,140 C42,134 14,120 16,94 Z',
@@ -190,7 +191,7 @@
       enzyme(62, 94, 0, 'calpain') +
       enzyme(220, 62, 1.4, 'cathepsin') +
       enzyme(348, 212, 2.6, 'calpain') +
-      '<text x="220" y="300" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7d8f96">' + CFG().meat.fridgeTempF + '&#176;F  &#183;  do not open  &#183;  do not peek</text>' +
+      '<text x="220" y="300" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#7d8f96">' + T().deg(CFG().meat.fridgeTempF) + '  &#183;  do not open  &#183;  do not peek</text>' +
       '</svg>';
   }
 
@@ -291,11 +292,11 @@
       '<g transform="translate(352,18)">' +
         '<rect x="0" y="0" width="52" height="118" rx="12" fill="#22303a" stroke="#41616f" stroke-width="2"/>' +
         '<rect x="8" y="10" width="36" height="26" rx="5" fill="#04110f"/>' +
-        '<text x="26" y="28" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#7fc26a" id="svTemp">' + CFG().cook.sousVideTempF + '</text>' +
+        '<text x="26" y="28" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" fill="#7fc26a" id="svTemp">' + T().val(CFG().cook.sousVideTempF) + '</text>' +
         '<circle cx="26" cy="56" r="8" fill="#0f1a1f" stroke="#4d707f" stroke-width="2"/>' +
         '<rect x="14" y="96" width="24" height="42" rx="6" fill="#2b3d47"/>' +
       '</g>' +
-      '<text x="200" y="302" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#6f9aab">' + CFG().cook.sousVideTempF + '&#176;F &#183; edge to edge &#183; nothing can go wrong in here</text>' +
+      '<text x="200" y="302" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#6f9aab">' + T().deg(CFG().cook.sousVideTempF) + ' &#183; edge to edge &#183; nothing can go wrong in here</text>' +
       '</svg>';
   }
 
@@ -324,7 +325,7 @@
       smoke +
       '<g transform="translate(340,42)">' +
         '<rect x="0" y="0" width="76" height="30" rx="8" fill="#0d0907" stroke="#5a3a22" stroke-width="2"/>' +
-        '<text x="38" y="21" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="14" fill="#ff8a2b">' + CFG().cook.grillTempF + '&#176;F</text>' +
+        '<text x="38" y="21" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="14" fill="#ff8a2b">' + T().deg(CFG().cook.grillTempF) + '</text>' +
       '</g>' +
       '<text x="220" y="300" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#c08a52">' + CFG().cook.grill + ' &#183; ' + CFG().cook.searSecondsPerSide + ' seconds a side &#183; do not walk away</text>' +
       '</svg>';
@@ -433,7 +434,7 @@
       '<rect x="24" y="42" width="272" height="96" rx="16" fill="url(#dnG)"/>' +
       '<g clip-path="url(#dnClip)">' + fat + '</g>' +
       marks +
-      '<text x="160" y="176" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#b19d8c">cross section &#183; ' + d.f + '&#176;F</text>' +
+      '<text x="160" y="176" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#b19d8c">cross section &#183; ' + T().deg(d.f) + '</text>' +
       '</svg>';
   }
 

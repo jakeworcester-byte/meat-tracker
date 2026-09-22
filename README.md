@@ -20,6 +20,7 @@ workflow in `.github/workflows/deploy.yml` on every push to `main`.
 | Doneness Dial | Cross-section, sous vide temperature, and an opinion |
 | Cook Day Playbook | The hour by hour plan |
 | The Beef Cam | A fake live feed. There is no camera |
+| Unit toggle | A degrees F / degrees C switch in the top bar. Converts every temperature on the page and remembers the choice per visitor |
 
 ## Changing the dates or the details
 
@@ -58,8 +59,24 @@ Then open http://localhost:8751
 ```
 index.html            page structure
 assets/config.js      all the dates and numbers  <- edit this one
+assets/temp.js        degrees F / degrees C conversion and the {{token}} system
 assets/content.js     all the copy: stages, grades, anatomy, FAQ, jokes
 assets/svg.js         every illustration on the page, drawn in code
 assets/app.js         timing engine, rendering, interactivity
 assets/styles.css     styling
 ```
+
+## Writing temperatures
+
+Never type a temperature straight into the copy. Write it once, in Fahrenheit,
+as a token, and the unit toggle handles the rest:
+
+| Token | Fahrenheit | Celsius |
+|---|---|---|
+| `{{129}}` | 129&deg;F | 54&deg;C |
+| `{{129\|w}}` | 129 degrees | 54 degrees |
+| `{{129\|n}}` | 129 | 54 |
+
+Tokens work in any string in `content.js`, and in `index.html` inside any element
+tagged `data-temps`. Temperatures that come from `config.js` go through
+`MeatTemp.deg()` or `MeatTemp.val()` instead.

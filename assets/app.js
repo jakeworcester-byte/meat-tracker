@@ -7,6 +7,7 @@
   const CFG = window.MEAT_CONFIG;
   const C = window.MeatContent;
   const S = window.MeatSVG;
+  const T = window.MeatTemp;
 
   const $ = function (id) { return document.getElementById(id); };
   const DAY = 86400000;
@@ -94,9 +95,9 @@
       lastStageP = st.p;
     }
 
-    $('phaseTag').textContent = 'Stage ' + (st.i + 1) + ' of 7 · ' + ph.tag;
+    $('phaseTag').textContent = T.fill('Stage ' + (st.i + 1) + ' of 7 · ' + ph.tag);
     $('phaseName').textContent = ph.name;
-    $('phaseBlurb').textContent = ph.blurb;
+    $('phaseBlurb').textContent = T.fill(ph.blurb);
     $('consoleDate').textContent = fmtDate(now()) + ' · ' + now().toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
     $('consoleWeight').textContent = CFG.meat.grade + ' · ' + CFG.meat.weightLbs + ' lb · ' + CFG.meat.cut;
 
@@ -135,12 +136,12 @@
     const targetDays = Math.round((D.cut - D.fridge) / DAY);
     const toCook = Math.max(0, Math.ceil((D.bathIn - now()) / DAY));
     const sets = {
-      aging: [[agingDays, 'Days aged'], [targetDays, 'Day target'], [CFG.meat.fridgeTempF + '°', 'Fridge temp']],
+      aging: [[agingDays, 'Days aged'], [targetDays, 'Day target'], [T.deg(CFG.meat.fridgeTempF), 'Fridge temp']],
       butchery: [[CFG.meat.steakCount, 'Steaks out'], [CFG.meat.steakThickness, 'Thickness'], [CFG.meat.weightLbs, 'Lb of beef']],
       drydown: [['24', 'Hours open'], ['0', 'Times covered'], ['Matte', 'Surface']],
       sealed: [[CFG.meat.steakCount, 'Sealed'], ['0%', 'Oxygen'], [toCook, 'Days to go']],
-      sousvide: [[CFG.cook.sousVideTempF + '°', 'Bath temp'], [CFG.cook.sousVideHours + ' hr', 'In the bath'], ['0', 'Grey band']],
-      sear: [[CFG.cook.grillTempF + '°', 'Grill temp'], [CFG.cook.searSecondsPerSide + 's', 'Per side'], ['1', 'Flip only']],
+      sousvide: [[T.deg(CFG.cook.sousVideTempF), 'Bath temp'], [CFG.cook.sousVideHours + ' hr', 'In the bath'], ['0', 'Grey band']],
+      sear: [[T.deg(CFG.cook.grillTempF), 'Grill temp'], [CFG.cook.searSecondsPerSide + 's', 'Per side'], ['1', 'Flip only']],
       served: [[TOTAL_DAYS, 'Days taken'], [CFG.meat.steakCount, 'Steaks served'], ['0', 'Leftovers']]
     };
     $('vitals').innerHTML = (sets[st.id] || sets.aging).map(function (v) {
@@ -187,8 +188,8 @@
     $('tlDetail').innerHTML =
       '<div class="when">' + when + '</div>' +
       '<h3>' + p.icon + ' ' + p.name + '</h3>' +
-      '<p>' + p.detail + '</p>' +
-      '<div class="sci"><b>' + p.sciTitle + '</b>' + p.sci + '</div>';
+      '<p>' + T.fill(p.detail) + '</p>' +
+      '<div class="sci"><b>' + p.sciTitle + '</b>' + T.fill(p.sci) + '</div>';
   }
 
   /* =========================================================
@@ -356,15 +357,18 @@
   /* =========================================================
      DONENESS
      ========================================================= */
+  let doneKey = 'mr';
+
   function renderDoneness(key) {
+    doneKey = key;
     const dn = C.DONENESS.find(function (x) { return x.key === key; });
     $('doneSvg').innerHTML = S.donenessSlab(dn);
     $('doneName').textContent = dn.name;
-    $('doneTemp').textContent = dn.f + '°F · ' + dn.c + '°C';
+    $('doneTemp').textContent = T.deg(dn.f) + ' · ' + (T.get() === 'C' ? dn.f + '°F' : dn.c + '°C');
     $('doneDesc').textContent = dn.desc;
     $('doneVerdict').textContent = dn.verdict;
     $('doneStats').innerHTML = [
-      [dn.f + '°F', 'Bath temp'],
+      [T.deg(dn.f), 'Bath temp'],
       [CFG.cook.sousVideHours + ' hr', 'Bath time'],
       ['60s', 'Sear per side']
     ].map(function (s) { return '<div class="stat"><b>' + s[0] + '</b><span>' + s[1] + '</span></div>'; }).join('');
@@ -390,15 +394,16 @@
     const t = function (h) { return d(CFG.dates.cook, h).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' }); };
     const cards = [
       ['①', t(CFG.cookDay.sousVideIn), 'Into the bath',
-        'Sealed steaks go straight from the fridge into water held at ' + CFG.cook.sousVideTempF + ' degrees. No thawing step, no unwrapping, no fuss. They stay in for about ' + CFG.cook.sousVideHours + ' hours, and an extra hour will not hurt anything.'],
+        'Sealed steaks go straight from the fridge into water held at {{' + CFG.cook.sousVideTempF + '|w}}. No thawing step, no unwrapping, no fuss. They stay in for about ' + CFG.cook.sousVideHours + ' hours, and an extra hour will not hurt anything.'],
       ['②', t(CFG.cookDay.sousVideOut), 'Out, dry, and rest',
         'Bags come out, steaks come out of the bags, and every surface gets patted completely dry with paper towels. Then they sit on a rack for ' + CFG.cook.restBeforeSearMin + ' minutes. A wet steak steams instead of searing, and that is the whole ballgame.'],
       ['③', t(CFG.cookDay.searTime), 'Fire',
-        'The ' + CFG.cook.grill + ' runs wide open around ' + CFG.cook.grillTempF + ' degrees. ' + CFG.cook.searSecondsPerSide + ' seconds down, flip once, ' + CFG.cook.searSecondsPerSide + ' seconds down, off. Tongs only. Do not press it, do not poke it, do not walk away from it.'],
+        'The ' + CFG.cook.grill + ' runs wide open around {{' + CFG.cook.grillTempF + '|w}}. ' + CFG.cook.searSecondsPerSide + ' seconds down, flip once, ' + CFG.cook.searSecondsPerSide + ' seconds down, off. Tongs only. Do not press it, do not poke it, do not walk away from it.'],
       ['④', t(CFG.cookDay.serveTime), 'Forks up',
         'Straight from the grill to the board to the plate. No rest needed because the bath already handled that. Flaky salt on the cut surface, and the cap muscle goes to whoever has been the most patient about this website.']
     ];
     $('cookCards').innerHTML = cards.map(function (c) {
+      c[3] = T.fill(c[3]);
       return '<div class="card"><span class="big">' + c[0] + '</span>' +
         '<div class="mono" style="font-size:12px;color:var(--muted2);letter-spacing:.1em">' + c[1] + '</div>' +
         '<h4 style="margin-top:6px">' + c[2] + '</h4><p>' + c[3] + '</p></div>';
@@ -410,7 +415,7 @@
      ========================================================= */
   function buildFaq() {
     $('faqList').innerHTML = C.FAQ.map(function (f, i) {
-      return '<details' + (i === 0 ? ' open' : '') + '><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>';
+      return '<details' + (i === 0 ? ' open' : '') + '><summary>' + f[0] + '</summary><p>' + T.fill(f[1]) + '</p></details>';
     }).join('');
   }
 
@@ -428,7 +433,9 @@
     const stamp = now().toLocaleTimeString(undefined, { hour12: false, hour: '2-digit', minute: '2-digit' });
     const row = document.createElement('div');
     row.className = 'row';
-    row.innerHTML = '<span class="t">' + stamp + '</span><span>' + tickerPool[tickerIdx % tickerPool.length] + '</span>';
+    row.dataset.tpl = tickerPool[tickerIdx % tickerPool.length];
+    row.dataset.stamp = stamp;
+    row.innerHTML = '<span class="t">' + stamp + '</span><span>' + T.fill(row.dataset.tpl) + '</span>';
     el.insertBefore(row, el.firstChild);
     tickerIdx++;
     while (el.children.length > 12) el.removeChild(el.lastChild);
@@ -511,10 +518,54 @@
     renderSteaks();
   }
 
+  /* =========================================================
+     UNIT TOGGLE
+     ========================================================= */
+  function paintUnitButtons() {
+    Array.prototype.forEach.call(document.querySelectorAll('.unit-toggle button'), function (b) {
+      const on = b.dataset.unit === T.get();
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  function applyUnits() {
+    paintUnitButtons();
+    T.fillDom();                       // static copy in index.html
+    lastPhaseId = null; lastStageP = -1;   // force the stage art to redraw
+    renderConsole();
+    renderDetail(selectedPhase);
+    buildCookCards();
+    renderDoneness(doneKey);
+    buildFaq();
+    /* re-render ticker lines that are already on screen */
+    Array.prototype.forEach.call($('ticker').children, function (row) {
+      if (!row.dataset.tpl) return;
+      row.innerHTML = '<span class="t">' + row.dataset.stamp + '</span><span>' + T.fill(row.dataset.tpl) + '</span>';
+    });
+  }
+
+  function setupUnitToggle() {
+    Array.prototype.forEach.call(document.querySelectorAll('.unit-toggle button'), function (b) {
+      b.addEventListener('click', function () {
+        if (b.dataset.unit === T.get()) return;
+        T.set(b.dataset.unit);
+        applyUnits();
+        toast(T.get() === 'C'
+          ? 'Celsius it is. Very continental.'
+          : 'Back to Fahrenheit. Freedom units restored.');
+      });
+    });
+    paintUnitButtons();
+    T.fillDom();
+  }
+
   function boot() {
     $('heroSub').textContent =
       'One ' + CFG.meat.grade + ' whole ribeye. ' + CFG.meat.steakCount + ' steaks. ' + TOTAL_DAYS +
       ' days from the bag to the board, tracked here in something uncomfortably close to real time.';
+
+    setupUnitToggle();
 
     buildTimeline();
     selectedPhase = getState().i;
