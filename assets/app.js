@@ -42,7 +42,7 @@
 
   const T0 = D.fridge.getTime();
   const T1 = D.serveAt.getTime() + 0.5 * DAY;
-  const TOTAL_DAYS = Math.round((D.serveAt - D.fridge) / DAY);
+  const TOTAL_DAYS = Math.floor((D.serveAt - D.fridge) / DAY);
 
   /* ---------- state ---------- */
   let virtualNow = null;          // null = live

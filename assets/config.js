@@ -24,8 +24,8 @@ window.MEAT_CONFIG = {
   dates: {
     packed: "2026-09-18",    // packer's pack date (start of the cryovac clock)
     fridge: "2026-09-20",    // day it went into Jake's fridge (aging clock starts)
-    cut:    "2026-10-15",    // butchery day
-    seal:   "2026-10-17",    // after ~24-36h uncovered dry-down, vacuum sealed
+    cut:    "2026-10-17",    // butchery day
+    seal:   "2026-10-18",    // after ~24-36h uncovered dry-down, vacuum sealed
     cook:   "2026-10-25"     // STEAK DAY
   },
 
