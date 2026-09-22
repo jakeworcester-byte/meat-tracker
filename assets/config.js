@@ -26,7 +26,7 @@ window.MEAT_CONFIG = {
     fridge: "2026-09-20",    // day it went into Jake's fridge (aging clock starts)
     cut:    "2026-10-15",    // butchery day
     seal:   "2026-10-17",    // after ~24-36h uncovered dry-down, vacuum sealed
-    cook:   "2026-10-29"     // STEAK DAY
+    cook:   "2026-10-25"     // STEAK DAY
   },
 
   /* Hours on cook day (24h clock) */
