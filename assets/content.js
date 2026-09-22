@@ -1,5 +1,5 @@
 /* =============================================================
-   MEAT TRACKER — all the words
+   MEAT TRACKER - all the words
    ============================================================= */
 (function (global) {
   'use strict';

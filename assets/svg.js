@@ -1,5 +1,5 @@
 /* =============================================================
-   MEAT TRACKER — SVG factory
+   MEAT TRACKER - SVG factory
    Everything you see is drawn here. No images, no dependencies.
    ============================================================= */
 (function (global) {
@@ -51,7 +51,7 @@
   }
 
   /* ---------------------------------------------------------
-     ribeyeFace — the money shot, in a 240 x 170 box
+     ribeyeFace - the money shot, in a 240 x 170 box
      opts: meat, cap, fat, marble (0..4), seed, id, parts(bool),
            crust(bool), cooked(hex), dull(bool)
      --------------------------------------------------------- */
@@ -119,7 +119,7 @@
   }
 
   /* ---------------------------------------------------------
-     WHOLE ROLL — subprimal, face to the right
+     WHOLE ROLL - subprimal, face to the right
      --------------------------------------------------------- */
   function wholeRoll(opts) {
     const o = opts || {};
@@ -145,7 +145,7 @@
   }
 
   /* ---------------------------------------------------------
-     SCENES — each returns a full <svg> string for the stage
+     SCENES - each returns a full <svg> string for the stage
      p = 0..1 progress within that phase
      --------------------------------------------------------- */
   const VB = 'viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg"';

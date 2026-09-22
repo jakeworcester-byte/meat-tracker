@@ -1,5 +1,5 @@
 /* =============================================================
-   MEAT TRACKER — CONTROL PANEL
+   MEAT TRACKER - CONTROL PANEL
    Jake: this is the only file you ever need to edit.
    Change a date, save, commit, push. The whole site re-times itself.
    All dates are YYYY-MM-DD. All times are 24-hour, local to whoever
