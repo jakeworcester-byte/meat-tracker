@@ -12,7 +12,7 @@ workflow in `.github/workflows/deploy.yml` on every push to `main`.
 | Section | What it does |
 |---|---|
 | Live console | Current stage, countdown to Steak Day, progress meter, and an illustration of exactly what the beef looks like right now |
-| Time Machine | A slider that fast-forwards the whole 40 day process so anyone can preview what happens next. Every stage gets an equal slice of the track, so the cook-day stages are actually reachable |
+| Time Machine | A slider that fast-forwards the whole 35 day process so anyone can preview what happens next. Every stage gets an equal slice of the track, so the cook-day stages are actually reachable |
 | Seven Stages of Beef | Clickable timeline with the real explanation behind each step |
 | Pick a Steak | Unlocks on butchery day. Claim and name a steak (stored in the visitor's own browser) |
 | Marbling Lab | Drag from Select to A5 Wagyu and watch the intramuscular fat appear |
