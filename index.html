@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Meat Tracker</title>
+<meta name="description" content="Live tracking for one USDA Prime whole ribeye on its journey from a cryovac bag to the Primo XL. Follow your steak.">
+<meta property="og:title" content="The Meat Tracker">
+<meta property="og:description" content="One USDA Prime ribeye. Fourteen steaks. One very serious basement refrigerator. Track your steak in real time.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A5%A9</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <div class="brand display"><span class="dot"></span> The Meat Tracker</div>
+    <nav class="navlinks">
+      <a href="#journey">Journey</a>
+      <a href="#steaks">Your Steak</a>
+      <a href="#grading">Grading Lab</a>
+      <a href="#anatomy">Anatomy</a>
+      <a href="#doneness">Doneness</a>
+      <a href="#cookday">Cook Day</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <div class="kicker">Kansas City &middot; Basement Refrigerator &middot; Est. 2026</div>
+  <h1>The Meat<br>Tracker</h1>
+  <p class="sub" id="heroSub">One USDA Prime whole ribeye. Fourteen steaks. A refrigerator with a job to do. This page updates itself, so check back as often as your productivity can stand.</p>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== LIVE CONSOLE ===================== -->
+  <div class="console">
+    <div class="console-head">
+      <span class="live-chip" id="liveChip"><i></i> <span id="liveChipText">Live</span></span>
+      <span class="console-date mono" id="consoleDate">—</span>
+      <span class="console-date" style="margin-left:auto" id="consoleWeight">—</span>
+    </div>
+    <div class="console-body">
+      <div class="stage" id="stage"></div>
+      <div class="readout">
+        <span class="phase-tag" id="phaseTag">Phase 1 of 7</span>
+        <h2 class="phase-name" id="phaseName">Loading…</h2>
+        <p class="phase-blurb" id="phaseBlurb"></p>
+        <div class="countdown" id="countdown"></div>
+        <div>
+          <div class="meter-top"><span id="meterLabel">Progress</span><span id="meterPct">0%</span></div>
+          <div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
+        </div>
+        <div class="vitals" id="vitals"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timemachine">
+    <label for="tm">Time Machine</label>
+    <input type="range" id="tm" min="0" max="1000" value="0" aria-label="Scrub through the steak timeline">
+    <span class="mono" id="tmLabel" style="font-size:12px;color:var(--muted);min-width:118px">Live</span>
+    <button class="btn primary" id="tmReset" hidden>Back to Live</button>
+  </div>
+  <p style="font-size:13px;color:var(--muted2);margin:10px 2px 0">
+    Drag the slider to fast-forward the whole process and see what happens to the beef at every step. It snaps back to live when you hit the button.
+  </p>
+
+  <!-- ===================== JOURNEY ===================== -->
+  <section id="journey">
+    <div class="sec-head">
+      <div class="num">01 / The Journey</div>
+      <h2>Seven Stages of Beef</h2>
+      <p>From vacuum-sealed subprimal to a seared steak on a ceramic grill. Click any stage to find out what is actually happening in there.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+    <div class="tl-detail" id="tlDetail"></div>
+  </section>
+
+  <!-- ===================== STEAKS ===================== -->
+  <section id="steaks">
+    <div class="sec-head">
+      <div class="num">02 / Claim Your Cut</div>
+      <h2>Pick A Steak, Any Steak</h2>
+      <p>Once the roll gets broken down, every steak on this grid is a real steak. Claim one, name it, get emotionally involved. Your claim is saved in your browser only, so no, you are not actually in a binding contract with a ribeye. Probably.</p>
+    </div>
+    <div class="steak-bar" id="steakBar"></div>
+    <div id="steakArea"></div>
+  </section>
+
+  <!-- ===================== GRADING LAB ===================== -->
+  <section id="grading">
+    <div class="sec-head">
+      <div class="num">03 / Meat Science</div>
+      <h2>The Marbling Lab</h2>
+      <p>USDA grading is mostly one question: how much intramuscular fat is webbed through the eye of the ribeye, and how old was the animal. Drag the slider and watch the fat show up.</p>
+    </div>
+    <div class="lab">
+      <div class="lab-panel">
+        <div id="marbleSvg"></div>
+        <div class="slider-row">
+          <input type="range" id="marbleRange" min="0" max="4" step="1" value="3" aria-label="Marbling grade">
+          <div class="ticks" id="marbleTicks">
+            <span>Select</span><span>Choice</span><span>Choice+</span><span>Prime</span><span>Wagyu</span>
+          </div>
+        </div>
+      </div>
+      <div class="lab-panel">
+        <div class="grade-name" id="gradeName">USDA Prime</div>
+        <div class="grade-sub" id="gradeSub">Slightly Abundant marbling</div>
+        <p id="gradeBlurb"></p>
+        <div class="statline" id="gradeStats"></div>
+      </div>
+    </div>
+    <div class="cards" style="margin-top:16px">
+      <div class="card">
+        <span class="big">~2%</span>
+        <h4>Of US beef grades Prime</h4>
+        <p>Roughly 2 to 5 percent of graded carcasses make USDA Prime in a given year. Most of it gets bought by steakhouses before it ever reaches a retail case. This one did not get away.</p>
+      </div>
+      <div class="card">
+        <span class="big">A</span>
+        <h4>Maturity matters too</h4>
+        <p>Grading combines marbling with carcass maturity (A through E, based on bone and cartilage ossification). Prime is only available to A and B maturity. An old cow with gorgeous marbling still will not grade Prime.</p>
+      </div>
+      <div class="card">
+        <span class="big">Fat</span>
+        <h4>Is flavor, and also water</h4>
+        <p>Intramuscular fat melts around 105 to 130&deg;F, right in the range where a steak is cooking. It lubricates the muscle fiber bundles, carries fat-soluble flavor compounds, and makes the meat read as juicier even when it is technically losing moisture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ANATOMY ===================== -->
+  <section id="anatomy">
+    <div class="sec-head">
+      <div class="num">04 / Know Your Steak</div>
+      <h2>Anatomy Of A Ribeye</h2>
+      <p>A ribeye is not one muscle. It is a committee. Click a piece to learn who is who, and which part you should eat last.</p>
+    </div>
+    <div class="anat">
+      <div class="anat-svg" id="anatSvg"></div>
+      <div class="anat-list" id="anatList"></div>
+    </div>
+  </section>
+
+  <!-- ===================== DONENESS ===================== -->
+  <section id="doneness">
+    <div class="sec-head">
+      <div class="num">05 / The Only Real Argument</div>
+      <h2>Doneness Dial</h2>
+      <p>Pick your doneness. Receive your steak, your sous vide temperature, and an unsolicited opinion.</p>
+    </div>
+    <div class="done-wrap">
+      <div class="lab-panel">
+        <div class="done-btns" id="doneBtns"></div>
+        <div id="doneSvg"></div>
+      </div>
+      <div class="lab-panel">
+        <div class="grade-name" id="doneName" style="color:var(--ember2)">Medium Rare</div>
+        <div class="grade-sub" id="doneTemp">129&deg;F &middot; 54&deg;C</div>
+        <p id="doneDesc"></p>
+        <div class="verdict" id="doneVerdict"></div>
+        <div class="statline" id="doneStats"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COOK DAY ===================== -->
+  <section id="cookday">
+    <div class="sec-head">
+      <div class="num">06 / Game Day</div>
+      <h2>The Cook Day Playbook</h2>
+      <p>Sous vide first, then fire. The bath does the cooking, the Primo does the crust. Neither one is allowed to do the other one's job.</p>
+    </div>
+    <div class="cards" id="cookCards"></div>
+
+    <div class="sec-head" style="margin-top:46px">
+      <div class="num">07 / Live From The Fridge</div>
+      <h2>The Beef Cam</h2>
+      <p>There is no camera. There has never been a camera. Here is the feed anyway.</p>
+    </div>
+    <div class="ticker" id="ticker"></div>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button class="btn primary" id="oracleBtn">Ask The Meat Oracle</button>
+      <span id="oracleOut" style="color:var(--muted);font-size:15px"></span>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq">
+    <div class="sec-head">
+      <div class="num">08 / Questions You Were Going To Ask</div>
+      <h2>Frequently Asked, Repeatedly</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="big">No Steak Left Behind</div>
+  <p style="margin:8px 0 0">
+    The Meat Tracker &middot; built in a basement in Kansas City &middot; <span id="footTime" class="mono"></span><br>
+    Figures are cook's estimates, not a food safety guide. Cook to a temperature you are comfortable with.
+  </p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/config.js"></script>
+<script src="assets/svg.js"></script>
+<script src="assets/content.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
