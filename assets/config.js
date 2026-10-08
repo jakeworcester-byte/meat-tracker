@@ -31,10 +31,10 @@ window.MEAT_CONFIG = {
 
   /* Hours on cook day (24h clock) */
   cookDay: {
-    sousVideIn:  14,   // steaks go in the bath
-    sousVideOut: 17,   // out of the bath, pat dry, rest
-    searTime:    17.5, // Primo XL gets ripping hot
-    serveTime:   18    // forks up
+    sousVideIn:  15,   // steaks go in the bath
+    sousVideOut: 18,   // out of the bath, pat dry, rest
+    searTime:    18.5, // Primo XL gets ripping hot
+    serveTime:   19    // forks up
   },
 
   /* ---- Cooking spec ------------------------------------- */
