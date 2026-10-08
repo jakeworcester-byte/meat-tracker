@@ -30,9 +30,9 @@ Everything is in **`assets/config.js`**. That is the only file you need to touch
 dates: {
   packed: "2026-09-18",   // packer's pack date
   fridge: "2026-09-20",   // aging clock starts
-  cut:    "2026-10-15",   // butchery day
-  seal:   "2026-10-17",   // vacuum sealed after the dry-down
-  cook:   "2026-10-29"    // STEAK DAY
+  cut:    "2026-10-18",   // butchery day
+  seal:   "2026-10-19",   // vacuum sealed after the dry-down
+  cook:   "2026-10-26"    // STEAK DAY
 }
 ```
 
